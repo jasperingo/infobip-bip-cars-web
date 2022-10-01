@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { NavItem } from './components/NavItem';
 
-function App() {
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="flex">
+      <header className="w-1/4 h-screen p-8">
+        <h1 className="font-bold text-4xl text-orange-500">BipCars</h1>
+        <nav className="my-8">
+          <ul>
+            <NavItem text="IVR FLow" path="/" />
+            <NavItem text="Products" path="/products" />
+            <NavItem text="Working hours" path="/working-hours" />
+          </ul>
+        </nav>
       </header>
+
+      <main className="bg-red-100 flex-grow h-screen">
+        <div className="container">
+          <Outlet />
+          <ToastContainer />
+        </div>
+      </main>
+      
     </div>
   );
 }
-
-export default App;
